@@ -30,6 +30,15 @@ const Orders = ({url}) => {
     }
   }
 
+  const deleteorder=async(orderId)=>{
+    const response = await axios.post(url+"/api/order/removeOrder",{
+      orderId,
+    })
+    if(response.data.success){
+      await fetchAllOrders();
+    }
+  }
+
   useEffect(()=>{
     fetchAllOrders()
   },[])
@@ -59,6 +68,7 @@ const Orders = ({url}) => {
             </div>
             <p>Itmes: {order.items.length}</p>
             <p>₹{order.amount}</p>
+            <button onClick={()=>deleteorder(order._id)}>X</button>
             <select onChange={(event)=> statusHandler(event,order._id)} value={order.status} >
               <option value="Food Processing">Food Processing</option>
               <option value="Out for delivery">Out for delivery</option>

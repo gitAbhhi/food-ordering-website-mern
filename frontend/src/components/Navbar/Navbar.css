@@ -126,7 +126,7 @@ background-color: #fff4f2;
 
 @media (max-width:900px){
     .navbar .logo{
-        width: 120px;
+        width: 70px;
     }
 
     .navbar-menu{
@@ -149,7 +149,10 @@ background-color: #fff4f2;
 }
 
 @media (max-width:750px){
-    .navbar-menu{
+    /* .navbar-menu{
         display: none;
-    } 
+    }  */
+      .logo{
+        width: 30px;
+      }
 }
