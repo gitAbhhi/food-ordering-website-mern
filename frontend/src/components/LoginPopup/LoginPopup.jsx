@@ -4,9 +4,14 @@ import { assets } from '../../assets/assets'
 import { StoreContext } from './../context/StoreContext';
 import axios from 'axios'
 
+
 const LoginPopup = ({setShowLogin}) => {
 
     const {url, setToken} = useContext(StoreContext)
+
+    const [showPassword,setShowPassword]=useState(false);
+
+
 
     const [currentState, setCurrentState] = useState('Login')
     const [data, setData] = useState({
@@ -52,7 +57,10 @@ const LoginPopup = ({setShowLogin}) => {
                 {currentState==='Login'?<></>: <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your name' required />}
                
                 <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your email' required />
-                <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Password' required />
+                <div className='input-pass'>
+                <input name='password' onChange={onChangeHandler} value={data.password} type={showPassword?"text":"password"} placeholder='Password' required />
+                <button onClick={()=>setShowPassword(prev=>!prev)}>{showPassword?"Hide":"Show"}</button>
+                </div>
             </div>
 
             <button type='submit'>{currentState==='Sign Up'?'Create account':'Login'}</button>

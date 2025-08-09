@@ -71,3 +71,11 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.input-pass{
+    display: flex;
+    gap: 10px;
+}
+.input-pass input{
+    width: 80%;
+}
